@@ -396,5 +396,14 @@ document.getElementById("exportBtn").onclick=renderExport;
 window.addEventListener("beforeunload",()=>{if(objectUrl)URL.revokeObjectURL(objectUrl)});
 ctx.fillStyle="#0f0d0b";ctx.fillRect(0,0,canvas.width,canvas.height);
 </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW Registered!', reg))
+        .catch(err => console.error('SW Registration Failed!', err));
+    });
+  }
+  </script>
 </body>
 </html>
